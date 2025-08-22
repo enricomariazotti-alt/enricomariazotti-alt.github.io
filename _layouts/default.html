@@ -1,135 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <style>
-    body {
-      display: grid;
-      grid-template-columns: 220px 1fr 220px;
-      gap: 1rem;
-      min-height: 100vh;
-      margin: 0;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page.title }} | {{ site.title }}</title>
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<style>
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --sidebar-bg: #f0f0f0;
+}
 
-    nav.sidebar-left {
-      background: var(--sidebar-bg, #f4f4f4);
-      padding: 1rem;
-    }
+body.dark {
+  --bg-color: #121212;
+  --text-color: #eee;
+  --sidebar-bg: #1e1e1e;
+}
 
-    main {
-      padding: 1rem;
-    }
+body {
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 1rem;
+  margin: 0;
+  min-height: 100vh;
+  font-family: sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
 
-    aside.sidebar-right {
-      background: var(--sidebar-bg, #f4f4f4);
-      padding: 1rem;
-    }
+/* Left sidebar */
+nav.sidebar-left {
+  background-color: var(--sidebar-bg);
+  padding: 1rem;
+}
+nav.sidebar-left a { display:block; padding:0.5em 0; color: var(--text-color); text-decoration:none; }
 
-    /* Hamburger menu button */
-    #menu-toggle {
-      display: none;
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 1000;
-      font-size: 24px;
-      background: #333;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 5px 10px;
-      cursor: pointer;
-    }
+/* Right sidebar */
+aside.sidebar-right {
+  background-color: var(--sidebar-bg);
+  padding: 1rem;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+}
+aside.sidebar-right a { display:block; padding:0.3em 0; color: var(--text-color); text-decoration:none; font-size:0.9em;}
+aside.sidebar-right a.h2 { margin-left: 10px; }
+aside.sidebar-right a.h3 { margin-left: 20px; }
+aside.sidebar-right a.active { font-weight: bold; color: #1e90ff; }
 
-    /* Mobile layout */
-    @media (max-width: 768px) {
-      body {
-        grid-template-columns: 1fr;
-      }
+/* Main content */
+main {
+  padding: 1rem;
+  max-width: 800px;
+}
 
-      nav.sidebar-left {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 200px;
-        background: #f4f4f4;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-        z-index: 999;
-        padding: 1rem;
-      }
+/* Hamburger menu (mobile) */
+#menu-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  font-size: 24px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
 
-      nav.sidebar-left.open {
-        display: block;
-      }
+/* Theme toggle button */
+#theme-toggle {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e90ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+}
 
-      aside.sidebar-right {
-        display: none;
-      }
-
-      #menu-toggle {
-        display: block;
-      }
-    }
-  </style>
+/* Mobile layout */
+@media (max-width: 768px) {
+  body { grid-template-columns: 1fr; }
+  nav.sidebar-left { display: none; position: fixed; top:0; left:0; bottom:0; width:200px; box-shadow:2px 0 5px rgba(0,0,0,0.2); z-index:999; }
+  nav.sidebar-left.open { display:block; }
+  aside.sidebar-right { display:none; }
+  #menu-toggle { display: block; }
+}
+</style>
 </head>
 <body>
-  <!-- Hamburger button (mobile only) -->
-  <button id="menu-toggle">☰</button>
 
-  <!-- Left sidebar navigation -->
-  <nav class="sidebar-left">
-    <h3>Pages</h3>
-    <ul>
-      {% for page in site.pages %}
-        {% if page.title %}
+<!-- Hamburger menu button -->
+<button id="menu-toggle">☰</button>
+
+<!-- Left sidebar -->
+<nav class="sidebar-left">
+  <h3>Pages</h3>
+  <ul>
+    {% for page in site.pages %}
+      {% if page.title %}
         <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </nav>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
 
-  <!-- Main content -->
-  <main>
-    {{ content }}
-  </main>
+<!-- Main content -->
+<main>
+  {{ content }}
+</main>
 
-  <!-- Right sidebar (table of contents) -->
-  <aside class="sidebar-right">
-    <h3>On this page</h3>
-    <ul>
-      {% for heading in page.content | split: '<h2' %}
-        {% if forloop.index > 1 %}
-          {% assign section = heading | split: '</h2>' | first %}
-          <li><a href="#section{{ forloop.index }}">{{ section | remove: '>' }}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </aside>
+<!-- Right sidebar Table of Contents -->
+<aside class="sidebar-right">
+  <h3>Contents</h3>
+  <ul id="toc"></ul>
+</aside>
 
-  <!-- Theme toggle button -->
-  <button id="theme-toggle">Switch Theme</button>
+<!-- Theme toggle -->
+<button id="theme-toggle">Switch Theme</button>
 
-  <script>
-    // Hamburger toggle
-    document.getElementById("menu-toggle").addEventListener("click", function () {
-      document.querySelector("nav.sidebar-left").classList.toggle("open");
-    });
+<script>
+// Hamburger menu toggle
+document.getElementById("menu-toggle").addEventListener("click", () => {
+  document.querySelector("nav.sidebar-left").classList.toggle("open");
+});
 
-    // Theme toggle (simplified)
-    const themeToggle = document.getElementById("theme-toggle");
-    themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      if (document.body.classList.contains("dark")) {
-        themeToggle.textContent = "Switch to Light Mode";
-      } else {
-        themeToggle.textContent = "Switch to Dark Mode";
-      }
-    });
-  </script>
+// Theme toggle persistent
+const themeToggle = document.getElementById("theme-toggle");
+
+// Apply saved theme
+if(localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  themeToggle.textContent = "Switch to Light Mode";
+} else {
+  themeToggle.textContent = "Switch to Dark Mode";
+}
+
+// Toggle theme and save
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  if(document.body.classList.contains("dark")) {
+    localStorage.setItem("theme","dark");
+    themeToggle.textContent = "Switch to Light Mode";
+  } else {
+    localStorage.setItem("theme","light");
+    themeToggle.textContent = "Switch to Dark Mode";
+  }
+});
+
+// Generate Table of Contents (h2/h3)
+const toc = document.getElementById("toc");
+const headings = document.querySelectorAll('main h2, main h3');
+headings.forEach(heading => {
+  const id = heading.id || heading.textContent.toLowerCase().replace(/\s+/g,'-');
+  heading.id = id;
+  const a = document.createElement('a');
+  a.href = `#${id}`;
+  a.textContent = heading.textContent;
+  a.className = heading.tagName.toLowerCase();
+  toc.appendChild(a);
+});
+
+// Scrollspy: highlight active heading
+window.addEventListener('scroll', () => {
+  let current = headings[0];
+  headings.forEach(h => { if(window.scrollY >= h.offsetTop - 20) current = h; });
+  document.querySelectorAll('.sidebar-right a').forEach(a => a.classList.remove('active'));
+  const activeLink = document.querySelector(`.sidebar-right a[href="#${current.id}"]`);
+  if(activeLink) activeLink.classList.add('active');
+});
+</script>
 </body>
 </html>

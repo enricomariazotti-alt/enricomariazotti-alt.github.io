@@ -3,7 +3,7 @@ title: MS-My Style
 layout: default
 ---
 
-# Hi! I’m Enrico ☕🌍
+# MS-My Style ☕🌍
 
 A coffee-loving, adventure-chasing, sometimes-chaotic soul with a soft spot for cozy moments and big laughs 😄. I’m a proud parent of two amazing kids 👨‍👧‍👦, always curious, and love finding beauty in the unexpected ✨. I enjoy long walks 🚶‍♂️, spontaneous adventures 🏕️, binge-watching shows 📺, and good conversations that can go anywhere 🗣️. Life’s messy, fun, and full of surprises—and I’m here to try to enjoy it all while sharing my journey with you 💫.  
 
