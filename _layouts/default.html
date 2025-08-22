@@ -1,67 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | {{ site.title }}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title }} | {{ site.title }}</title>
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<style>
+body {
+  display: flex;
+  margin: 0;
+  font-family: sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  scroll-behavior: smooth;
+}
 
-  <!-- CSS globale -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+/* Left sidebar: pages */
+nav.sidebar-left {
+  width: 220px;
+  background-color: #f0f0f0;
+  padding: 1em;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+body.dark nav.sidebar-left { background-color: #1e1e1e; }
+nav.sidebar-left a { display:block; padding:0.5em 0; color:#000; text-decoration:none; }
+body.dark nav.sidebar-left a { color:#eee; }
 
-  <!-- CSS per pulsante fisso -->
-  <style>
-    #theme-toggle-fixed {
-      position: fixed;
-      bottom: 1em;
-      right: 1em;
-      padding: 0.5em 1em;
-      cursor: pointer;
-      z-index: 1000;
-      border: none;
-      border-radius: 5px;
-      background-color: #1e90ff;
-      color: white;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
+/* Right sidebar: table of contents */
+nav.sidebar-right {
+  width: 220px;
+  background-color: #f9f9f9;
+  padding: 1em;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+body.dark nav.sidebar-right { background-color: #2a2a2a; }
+nav.sidebar-right a {
+  display:block;
+  padding:0.3em 0;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+}
+nav.sidebar-right a.h2 { margin-left: 10px; }
+nav.sidebar-right a.h3 { margin-left: 20px; }
+body.dark nav.sidebar-right a { color:#ccc; }
+nav.sidebar-right a.active { font-weight: bold; color: #1e90ff; }
 
-    #theme-toggle-fixed:hover {
-      background-color: #0066cc;
-    }
-  </style>
+/* Main content */
+main.content {
+  flex: 1;
+  padding: 2em;
+  max-width: 800px;
+}
+
+/* Theme toggle button */
+#theme-toggle-fixed {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #1e90ff;
+  color: white;
+  font-weight: bold;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+#theme-toggle-fixed:hover { background-color: #0066cc; }
+</style>
 </head>
 <body>
-  <!-- Contenuto della pagina -->
-  <main>
-    {{ content }}
-  </main>
 
-  <!-- Pulsante fisso Light/Dark Mode -->
-  <button id="theme-toggle-fixed">Switch to Dark Mode</button>
+<!-- Left sidebar -->
+<nav class="sidebar-left">
+  <h3>Pages</h3>
+  <ul style="list-style:none; padding-left:0;">
+    {% for page in site.pages %}
+      {% if page.title %}
+        <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
 
-  <!-- JavaScript per toggle tema -->
-  <script>
-    const btn = document.getElementById('theme-toggle-fixed');
+<!-- Main content -->
+<main class="content">
+  {{ content }}
+</main>
 
-    // Set theme based on saved preference in localStorage
-    if(localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark');
-      btn.textContent = 'Switch to Light Mode';
-    } else {
-      btn.textContent = 'Switch to Dark Mode';
-    }
+<!-- Right sidebar Table of Contents -->
+<nav class="sidebar-right">
+  <h3>Contents</h3>
+  <ul id="toc" style="list-style:none; padding-left:0;"></ul>
+</nav>
 
-    // Toggle dark/light mode on button click
-    btn.onclick = () => {
-      document.body.classList.toggle('dark');
-      if(document.body.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-        btn.textContent = 'Switch to Light Mode';
-      } else {
-        localStorage.setItem('theme', 'light');
-        btn.textContent = 'Switch to Dark Mode';
-      }
-    };
-  </script>
+<!-- Theme toggle button -->
+<button id="theme-toggle-fixed">Switch to Dark Mode</button>
+
+<script>
+// Dark/Light toggle
+const btn = document.getElementById('theme-toggle-fixed');
+if(localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark');
+  btn.textContent = 'Switch to Light Mode';
+} else {
+  btn.textContent = 'Switch to Dark Mode';
+}
+btn.onclick = () => {
+  document.body.classList.toggle('dark');
+  if(document.body.classList.contains('dark')) {
+    localStorage.setItem('theme', 'dark');
+    btn.textContent = 'Switch to Light Mode';
+  } else {
+    localStorage.setItem('theme', 'light');
+    btn.textContent = 'Switch to Dark Mode';
+  }
+};
+
+// Generate Table of Contents
+const toc = document.getElementById('toc');
+const headings = document.querySelectorAll('main.content h1, main.content h2, main.content h3');
+headings.forEach(heading => {
+  const id = heading.id || heading.textContent.toLowerCase().replace(/\s+/g,'-');
+  heading.id = id;
+  const a = document.createElement('a');
+  a.href = `#${id}`;
+  a.textContent = heading.textContent;
+  a.className = heading.tagName.toLowerCase(); // h1, h2, h3
+  toc.appendChild(a);
+});
+
+// Scrollspy: highlight active heading
+window.addEventListener('scroll', () => {
+  let current = headings[0];
+  headings.forEach(h => {
+    if(window.scrollY >= h.offsetTop - 20) current = h;
+  });
+  document.querySelectorAll('.sidebar-right a').forEach(a => a.classList.remove('active'));
+  const activeLink = document.querySelector(`.sidebar-right a[href="#${current.id}"]`);
+  if(activeLink) activeLink.classList.add('active');
+});
+</script>
 </body>
 </html>
