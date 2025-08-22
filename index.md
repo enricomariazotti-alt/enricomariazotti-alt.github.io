@@ -3,7 +3,7 @@ title: Benvenuto
 layout: default
 ---
 
-# 👋 Ciao, sono [Il Tuo Nome]
+# 👋 Ciao, sono [Enrico Maria Zotti]
 
 Benvenuto sul mio sito personale!  
 Qui condivido progetti, appunti e interessi.
@@ -13,3 +13,4 @@ Qui condivido progetti, appunti e interessi.
 - 📫 Puoi contattarmi su [LinkedIn](https://linkedin.com/in/tuo-username)
 
 👉 Scopri di più su di me nella pagina [Chi sono](about.md).
+
