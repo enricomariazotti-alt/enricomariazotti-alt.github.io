@@ -16,5 +16,5 @@ A coffee-loving, adventure-chasing, sometimes-chaotic soul with a soft spot for 
 The idea behind this blog is to share a mix of the journey I’ve made so far 🛤️ and the everyday situations, thoughts 💭, and reflections I experience—a honest intersection of past and present, challenges and small joys 🌟.
 
 
-👉 Scopri di più su di me nella pagina [Chi sono](about.md).
+👉 Learn more about me on the [About Me](about.md) page.
 

@@ -8,15 +8,8 @@ layout: default
 ## Personal Info 🌍
 - **Name:** Enrico-Maria Zotti  
 - **Date of Birth:** 08.02.1976  
-- **Age:** {% assign birth_date = '1976-02-08' | date: '%s' %}
-{% assign now_date = 'now' | date: '%s' %}
-{% assign age_in_seconds = now_date | minus: birth_date %}
-{% assign age = age_in_seconds | divided_by: 31556952 | floor %}
-{{ age }} years old  
-- **Place of Birth:** Italy 🇮🇹  
-- **Current City:** Berlin, Germany 🇩🇪  
-- **Living in Berlin Since:** 2008  
-- **MS Diagnosis:** 2011 💪  
+- **Age:** {% assign birth_date = '1976-02-08' | date: '%s' %}{% assign now_date = 'now' | date: '%s' %}{% assign age_in_seconds = now_date | minus: birth_date %}{% assign age = age_in_seconds | divided_by: 31556952 | floor %} {{ age }} years old
+
 
 ---
 
