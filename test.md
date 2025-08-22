@@ -8,8 +8,8 @@ title: Overview
 <ul>
 {% assign pages_sorted = site.pages | sort: "name" %}
 {% for p in pages_sorted %}
-    {% if p.name contains ".md" and p.name != "index.md" %}
+  {% if p.name contains ".md" and p.name != "test.md" %}
     <li><a href="{{ p.url | relative_url }}">{{ p.title | default: p.name | remove: ".md" | capitalize }}</a></li>
-  {% endunless %}
+  {% endif %}
 {% endfor %}
 </ul>
