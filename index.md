@@ -3,10 +3,10 @@ title: MS-My Style
 layout: default
 ---
 
-<!-- Bottone per switchare il tema -->
-<button id="theme-toggle" style="margin-bottom:1em;">Toggle Theme</button>
+<!-- Theme toggle button -->
+<button id="theme-toggle" style="margin-bottom:1em;">Switch to Dark Mode</button>
 
-<!-- CSS per Light e Dark Mode -->
+<!-- CSS for Light and Dark Mode -->
 <style>
 :root {
   --bg-color: #ffffff;
@@ -31,24 +31,35 @@ body {
 a {
   color: var(--link-color);
 }
+
 button {
   padding: 0.5em 1em;
   cursor: pointer;
 }
 </style>
 
-<!-- JavaScript per il toggle -->
+<!-- JavaScript for the toggle functionality -->
 <script>
 const btn = document.getElementById('theme-toggle');
 
-// Imposta il tema salvato in locale
+// Set the theme based on saved preference in localStorage
 if(localStorage.getItem('theme') === 'dark') {
   document.body.classList.add('dark');
+  btn.textContent = 'Switch to Light Mode'; // Update button text
+} else {
+  btn.textContent = 'Switch to Dark Mode'; // Default button text
 }
 
+// Toggle dark/light mode on button click
 btn.onclick = () => {
   document.body.classList.toggle('dark');
-  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+  if(document.body.classList.contains('dark')) {
+    localStorage.setItem('theme', 'dark');
+    btn.textContent = 'Switch to Light Mode'; // Update text when dark
+  } else {
+    localStorage.setItem('theme', 'light');
+    btn.textContent = 'Switch to Dark Mode'; // Update text when light
+  }
 };
 </script>
 
