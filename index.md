@@ -4,55 +4,74 @@ layout: default
 nav_order: 1
 ---
 
-# MS-My Style ☕🌍
-
-**MS (Multiple Sclerosis)**, for me, is not just a challenge—it’s *My Style* 💪. It’s part of how I live, think, and grow 🌱.  
-
 <div class="mobile-toc">
   <strong>Table of Contents</strong>
   <ul></ul>
 </div>
 
-My journey so far has been full of difficulties, challenges, victories 🏆, and losses 💔, and every day brings its own mix of small wins, reflections 🤔, and moments of joy 😊. I embrace life fully, navigating the ups and downs with my own pace and perspective, turning what some see as limits into a unique way of experiencing the world 🌈.  
+# MS? My Style ☕🌍
 
-Some days are easier than others. There are mornings when just getting out of bed feels like an achievement, and evenings when I can sit quietly, sip a coffee, and watch the sunset with a sense of calm. On other days, the fatigue hits hard, reminding me of the importance of pacing myself and being gentle with my body.  
+MS? Multiple Sclerosis? No thanks. I prefer **My Style**. 💪  
 
-Through it all, I’ve learned to celebrate **small victories**: a walk in the park with my kids without feeling drained, finishing a work project that seemed impossible, or simply laughing at something silly with friends. These moments may seem ordinary to some, but for me, they carry a deep sense of accomplishment and gratitude.  
+We don’t always get to choose what shows up at our doorstep—illness, loss, challenges we never asked for. But what we *do* get to choose is how we respond. And I’ve chosen to do it **My Way, with My Style**!  
 
-I also love exploring new hobbies and passions. Sometimes it’s cooking a new recipe 🍝, sometimes it’s diving into a series I’ve been meaning to watch 📺, or taking spontaneous bike rides around Berlin 🚴‍♂️. Each activity, even the small ones, helps me feel alive and connected.  
+Yes, I live with MS.  
+But I’m not here to surrender to it, or to let it shape my story.  
+I’m here to **live fully, love deeply, stumble, laugh, rise, and keep walking—always walking—my path**.  
+
+Not the one fear wants me to take.  
+Not the one pain tries to dictate.  
+But **My Style**—bold, hopeful, imperfect, and authentic.  
+
+As the song says:  
+*"I faced it all and I stood tall… and did it my way."*  
+
+This journey isn’t about what MS takes away.  
+It’s about what I choose to give, to be, and to believe in every single day.  
+
+So if you’re reading this and going through something hard—remember:  
+You don’t have to do it the way others expect.  
+You don’t have to fit into a mold.  
+You can **fight, live, dream, and thrive… your way**. ✨
+
+---
+
+## My Journey
+
+Living with MS has been full of challenges, victories 🏆, and small moments of joy 😊. Some days are harder than others—mornings when just getting out of bed feels like an achievement, evenings when a quiet cup of coffee and a sunset brings calm. On tougher days, fatigue reminds me to pace myself and be gentle with my body.  
+
+I celebrate **small victories**: a walk in the park with my kids without feeling drained, finishing a tricky project, or laughing at something silly with friends. These moments may seem ordinary, but for me, they carry deep meaning and gratitude.  
+
+I also love exploring new hobbies: cooking a new recipe 🍝, diving into a series 📺, or spontaneous bike rides around Berlin 🚴‍♂️. Each activity, even small, helps me feel alive and connected.
 
 ---
 
 ## Daily Life & Mindset
 
-Living with MS has taught me the importance of **mindset**. How I approach each day can make a huge difference in how I experience it. Choosing patience, kindness toward myself, and appreciation for the little things helps me navigate challenges without losing hope.  
+Living with MS has taught me the importance of **mindset**. How I approach each day makes a huge difference. Choosing patience, self-kindness, and appreciation for little things helps me navigate challenges without losing hope.  
 
-I try to focus on what I *can* do rather than what I can’t. Even small adjustments—like planning my day around my energy levels, taking breaks when needed, or practicing mindfulness—create a sense of control and balance in my life.  
+I focus on what I *can* do, rather than what I can’t. Simple adjustments—planning my day around energy levels, taking breaks, practicing mindfulness—create control and balance in my life.  
 
 ---
 
 ## Family & Relationships
 
-My children are a constant source of inspiration and motivation. Their energy, curiosity, and laughter remind me to celebrate life, no matter how challenging a day may be.  
+My children are my greatest inspiration. Their energy, curiosity, and laughter remind me to celebrate life every day.  
 
-Friendships and connections also play a vital role. Surrounding myself with people who understand, support, and share moments of joy or humor makes the journey lighter and more meaningful.  
+Friendships and meaningful connections matter too. Surrounding myself with people who understand, support, and share moments of joy makes this journey lighter and richer.  
 
 ---
 
 ## Adventures & Curiosity
 
-Even with limitations, I make room for adventure. From spontaneous trips to nature walks, exploring new neighborhoods in Berlin, or trying new experiences, I embrace opportunities that bring learning and joy.  
+Even with limitations, I make room for adventure: spontaneous trips, nature walks, exploring Berlin, or trying new experiences.  
 
-Curiosity drives me—whether it’s discovering a new hobby, experimenting with cooking, or diving into a new book or series. Every little exploration adds color to my life.  
-
----
-
-This blog is my way of sharing all these experiences—the highs, the lows, the little victories, and the reflections that come with living fully despite challenges. My hope is that through sharing, I can inspire others to find their own way of embracing life, no matter the obstacles.  
+Curiosity drives me—discovering hobbies, experimenting with cooking, or diving into a new book or series. Each little exploration adds color to my life.  
 
 ---
 
-The idea behind this blog is to share a mix of the journey I’ve made so far 🛤️ and the everyday situations, thoughts 💭, and reflections I experience—a honest intersection of past and present, challenges and small joys 🌟.  
+This blog is my way of sharing the **highs, lows, small victories, and reflections** of living fully despite challenges. I hope it inspires others to embrace life on their own terms.  
 
-Here you’ll find stories of adventure, humor, self-discovery, and the simple pleasures that make life meaningful. Whether it’s a quiet morning coffee ☕, a fun outing with the kids 👨‍👧‍👦, or a reflective moment in nature 🌳, every post is a snapshot of life lived with intention and curiosity.  
+Here you’ll find stories of adventure, humor, self-discovery, and simple pleasures: quiet morning coffees ☕, fun outings with the kids 👨‍👧‍👦, or reflective moments in nature 🌳. Every post is a snapshot of life lived with intention and curiosity.  
 
 👉 Learn more about me on the [About Me](about.md) page.
