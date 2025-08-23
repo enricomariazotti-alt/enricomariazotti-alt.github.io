@@ -12,6 +12,13 @@ Life challenges us in ways we could never imagine — yet we always have one inc
 
 ---
 
+## 📑 Table of Contents
+- [🎬 Quotes & Inspiration](#-quotes--inspiration)
+- [💡 Philosophy](#-philosophy)
+- [✅ Daily Choices](#-daily-choices)
+
+---
+
 ## 🎬 Quotes & Inspiration
 
 ### Henry Ford

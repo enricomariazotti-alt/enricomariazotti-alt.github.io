@@ -6,6 +6,22 @@ nav_order: 2
 
 # About Me 👋
 
+This page is a little window into who I am—my story, passions, quirks, and the things that make life meaningful to me.  
+You’ll find a mix of personal details, work background, hobbies, and the perspective I carry through life’s challenges and joys.  
+
+---
+
+<div class="mobile-toc">
+*Table of Contents*
+1. [Personal Info](#personal-info-)
+2. [Who I Am](#who-i-am-)
+3. [Work](#work-)
+4. [Hobbies & Interests](#hobbies--interests-)
+5. [Life Perspective](#life-perspective-)
+</div>
+
+---
+
 ## Personal Info 🌍
 - **Name:** Enrico-Maria Zotti  
 - **Date of Birth:** 08.02.1976  
@@ -25,7 +41,8 @@ Life’s messy, fun, and full of surprises—and I’m here to try to enjoy it a
 ---
 
 ## Work 💼
-I work in **Data Visualization** 📊, turning data into stories and insights. I also love tinkering with IT stuff 💻 – a mix of problem-solving, curiosity, and sometimes just pure “cazzeggio” 😄.
+I work in **Data Visualization** 📊, turning data into stories and insights.  
+I also love tinkering with IT stuff 💻 – a mix of problem-solving, curiosity, and sometimes just pure “cazzeggio” 😄.
 
 ---
 
@@ -42,10 +59,11 @@ I love spontaneous adventures, meaningful conversations, and little moments that
 ---
 
 ## Life Perspective 🌟
-I live with **MS (Multiple Sclerosis)**, but I see it as *My Style* – part of how I approach life, challenges, and daily joys. My journey has been full of difficulties, victories 🏆, and lessons learned, and I embrace it all with curiosity, humor, and gratitude.  
+I live with **MS (Multiple Sclerosis)**, but I see it as *My Style* – part of how I approach life, challenges, and daily joys.  
+My journey has been full of difficulties, victories 🏆, and lessons learned, and I embrace it all with curiosity, humor, and gratitude.  
 
 Life is a mix of challenges and small joys, and I try to navigate it in my own way, turning what some see as limits into unique experiences.
 
 ---
 
-Torna alla [Home](index.md).
+[Back to Home](index.md)
