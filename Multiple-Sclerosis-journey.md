@@ -10,14 +10,10 @@ But I choose to **LOVE LIFE, HATE THE DISEASE, AND FIGHT**. 🧡
 Life challenges us in ways we could never imagine — yet we always have one incredible power: the way we think.  
 ✨ Your thinking can shape your reality. Never forget it. 💪🧡
 
----
-
-## 📑 Table of Contents
-- [🎬 Quotes & Inspiration](#-quotes--inspiration)
-- [💡 Philosophy](#-philosophy)
-- [✅ Daily Choices](#-daily-choices)
-
----
+<div class="mobile-toc">
+  <strong>Table of Contents</strong>
+  <ul></ul>
+</div>
 
 ## 🎬 Quotes & Inspiration
 

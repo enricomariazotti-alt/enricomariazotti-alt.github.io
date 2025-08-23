@@ -5,103 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ page.title }} | {{ site.title }}</title>
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-<style>
-:root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-  --sidebar-bg: #f0f0f0;
-}
-
-body.dark {
-  --bg-color: #121212;
-  --text-color: #eee;
-  --sidebar-bg: #1e1e1e;
-}
-
-body {
-  display: grid;
-  grid-template-columns: 220px 1fr 220px;
-  gap: 1rem;
-  margin: 0;
-  min-height: 100vh;
-  font-family: sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Left sidebar */
-nav.sidebar-left {
-  background-color: var(--sidebar-bg);
-  padding: 1rem;
-  position: sticky;
-  top: 0;
-  height: calc(100vh - 2rem);
-  overflow-y: auto;
-}
-nav.sidebar-left a { display:block; padding:0.5em 0; color: var(--text-color); text-decoration:none; }
-nav.sidebar-left hr { margin: 0.8em 0; border: none; border-top: 1px solid #ccc; }
-
-/* Right sidebar */
-aside.sidebar-right {
-  background-color: var(--sidebar-bg);
-  padding: 1rem;
-  overflow-y: auto;
-  position: sticky;
-  top: 0;
-  height: calc(100vh - 2rem);
-}
-aside.sidebar-right a { display:block; padding:0.3em 0; color: var(--text-color); text-decoration:none; font-size:0.9em;}
-aside.sidebar-right a.h2 { margin-left: 10px; }
-aside.sidebar-right a.h3 { margin-left: 20px; }
-aside.sidebar-right a.active { font-weight: bold; color: #1e90ff; }
-
-/* Main content */
-main {
-  padding: 1rem;
-  max-width: 800px;
-}
-
-/* Hamburger menu (mobile) */
-#menu-toggle {
-  display: none;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
-  font-size: 24px;
-  background: #333;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-/* Theme toggle button */
-#theme-toggle {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #1e90ff;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-/* Mobile layout */
-@media (max-width: 768px) {
-  body { grid-template-columns: 1fr; }
-  nav.sidebar-left { display: none; position: fixed; top:0; left:0; bottom:0; width:200px; box-shadow:2px 0 5px rgba(0,0,0,0.2); z-index:999; }
-  nav.sidebar-left.open { display:block; }
-  aside.sidebar-right { display:none; }
-  #menu-toggle { display: block; }
-}
-</style>
 </head>
 <body>
 
@@ -129,7 +32,7 @@ main {
   {{ content }}
 </main>
 
-<!-- Right sidebar Table of Contents -->
+<!-- Right sidebar Table of Contents (desktop only) -->
 <aside class="sidebar-right">
   <h3>Contents</h3>
   <ul id="toc"></ul>
@@ -167,11 +70,11 @@ themeToggle.addEventListener("click", () => {
   }
 });
 
-// Generate Table of Contents (h2/h3)
+// Generate Desktop TOC (h2/h3)
 const toc = document.getElementById("toc");
 const headings = document.querySelectorAll('main h2, main h3');
 headings.forEach(heading => {
-  const id = heading.id || heading.textContent.toLowerCase().replace(/\s+/g,'-');
+  const id = heading.id || heading.textContent.toLowerCase().replace(/\s+/g,'-').replace(/[^\w-]/g,'');
   heading.id = id;
   const a = document.createElement('a');
   a.href = `#${id}`;
@@ -187,6 +90,22 @@ window.addEventListener('scroll', () => {
   document.querySelectorAll('.sidebar-right a').forEach(a => a.classList.remove('active'));
   const activeLink = document.querySelector(`.sidebar-right a[href="#${current.id}"]`);
   if(activeLink) activeLink.classList.add('active');
+});
+
+// Generate Mobile TOC
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileTOC = document.querySelector(".mobile-toc ul");
+  if (!mobileTOC) return;
+
+  headings.forEach(heading => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = `#${heading.id}`;
+    a.textContent = heading.textContent;
+    li.appendChild(a);
+    if (heading.tagName.toLowerCase() === "h3") li.style.marginLeft = "1.2em";
+    mobileTOC.appendChild(li);
+  });
 });
 </script>
 </body>
