@@ -9,18 +9,10 @@ nav_order: 2
 This page is a little window into who I am—my story, passions, quirks, and the things that make life meaningful to me.  
 You’ll find a mix of personal details, work background, hobbies, and the perspective I carry through life’s challenges and joys.  
 
----
-
 <div class="mobile-toc">
-*Table of Contents*
-1. [Personal Info](#personal-info-)
-2. [Who I Am](#who-i-am-)
-3. [Work](#work-)
-4. [Hobbies & Interests](#hobbies--interests-)
-5. [Life Perspective](#life-perspective-)
+  <strong>Table of Contents</strong>
+  <ul></ul>
 </div>
-
----
 
 ## Personal Info 🌍
 - **Name:** Enrico-Maria Zotti  

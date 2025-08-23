@@ -6,13 +6,10 @@ nav_order: 5
 
 # 🌟 Smart Homes & Smart Workspaces: Empowering Everyone Through Positive Technology 🌟
 
+
 <div class="mobile-toc">
   <strong>Table of Contents</strong>
-  <ul>
-    <li><a href="#-at-home-everyday-independence">At Home: Everyday Independence</a></li>
-    <li><a href="#-at-work-smarter-more-inclusive-offices">At Work: Smarter, More Inclusive Offices</a></li>
-    <li><a href="#-the-bigger-picture">The Bigger Picture</a></li>
-  </ul>
+  <ul></ul>
 </div>
 
 Technology isn’t just about convenience — it’s about creating opportunities and breaking down barriers. For people with disabilities, smart devices are transforming both how we live and how we work. 💪🏠💻✨
