@@ -1,6 +1,7 @@
 ---
 title: MS-My Style
 layout: default
+nav_order: 1
 ---
 
 # MS-My Style ☕🌍

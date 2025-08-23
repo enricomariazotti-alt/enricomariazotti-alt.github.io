@@ -36,6 +36,7 @@ nav.sidebar-left {
   padding: 1rem;
 }
 nav.sidebar-left a { display:block; padding:0.5em 0; color: var(--text-color); text-decoration:none; }
+nav.sidebar-left hr { margin: 0.8em 0; border: none; border-top: 1px solid #ccc; }
 
 /* Right sidebar */
 aside.sidebar-right {
@@ -106,9 +107,13 @@ main {
 <nav class="sidebar-left">
   <h3>Pages</h3>
   <ul>
-    {% for page in site.pages %}
-      {% if page.title %}
-        <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
+    {% assign sorted_pages = site.pages | sort: "nav_order" %}
+    {% for p in sorted_pages %}
+      {% if p.title %}
+        <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+        {% if forloop.index == 2 %}
+          <hr>
+        {% endif %}
       {% endif %}
     {% endfor %}
   </ul>
