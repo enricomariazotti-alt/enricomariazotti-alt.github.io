@@ -6,6 +6,10 @@ nav_order: 3
 
 # Overview
 
+This page provides an overview of the available sections of the site.  
+Here you’ll find quick links to the main topics, organized in navigation order,  
+so you can easily explore the content step by step.
+
 <ul>
 {% assign pages_sorted = site.pages | sort: "nav_order" %}
 {% for p in pages_sorted %}
