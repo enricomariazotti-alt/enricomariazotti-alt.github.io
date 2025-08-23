@@ -50,6 +50,10 @@ button {
 nav.sidebar-left {
   background-color: var(--sidebar-bg);
   padding: 1rem;
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 nav.sidebar-left a {
   display: block;
@@ -134,10 +138,15 @@ main {
   }
 
   #menu-toggle { display: block; }
+
+  /* Mobile TOC */
+  .mobile-toc {
+    display: block;
+    padding: 0.5em;
+    background-color: var(--sidebar-bg);
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+  .mobile-toc ul { padding-left: 1.2em; }
 }
 
-/* Mobile TOC */
-.mobile-toc { display: none; }
-@media (max-width: 768px) {
-  .mobile-toc { display: block; margin-bottom: 1rem; }
-}
