@@ -37,7 +37,7 @@ Life challenges us in ways we could never imagine — yet we always have one inc
 
 ## 💡 Philosophy
 
-At **The Power of Thinking**, we believe this deeply. No matter the illness, no matter the hardship, your thoughts are your greatest weapon.
+I believe this deeply: No matter the illness, no matter the hardship, your thoughts are your greatest weapon.
 
 ---
 
