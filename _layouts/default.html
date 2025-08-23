@@ -34,6 +34,10 @@ body {
 nav.sidebar-left {
   background-color: var(--sidebar-bg);
   padding: 1rem;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 2rem);
+  overflow-y: auto;
 }
 nav.sidebar-left a { display:block; padding:0.5em 0; color: var(--text-color); text-decoration:none; }
 nav.sidebar-left hr { margin: 0.8em 0; border: none; border-top: 1px solid #ccc; }
@@ -45,6 +49,7 @@ aside.sidebar-right {
   overflow-y: auto;
   position: sticky;
   top: 0;
+  height: calc(100vh - 2rem);
 }
 aside.sidebar-right a { display:block; padding:0.3em 0; color: var(--text-color); text-decoration:none; font-size:0.9em;}
 aside.sidebar-right a.h2 { margin-left: 10px; }
