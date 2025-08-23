@@ -49,3 +49,5 @@ So today — and every day — choose to:
 💥 You are stronger than you think.  
 💥 You can shape your own reality.  
 💥 You are not alone.
+
+![Multiple Sclerosis is a journey I never planned or asked for](/images/Multiple-Sclerosis-journey.jpg)
