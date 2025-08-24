@@ -97,7 +97,7 @@ main {
   display: none;
   position: fixed;
   top: 10px;
-  left: 10px;
+  right: 10px;
   z-index: 1000;
   font-size: 24px;
   background: #333;
