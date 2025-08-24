@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minecraft 2D Responsive</title>
+<style>
+body {margin:0; font-family:sans-serif; display:flex; flex-direction:column; align-items:center; background:#87CEEB;}
+canvas {border:2px solid #333; background:#87CEEB; cursor:pointer;}
+#inventory, #crafting, #mobile-controls {margin:5px; display:flex; flex-wrap:wrap; justify-content:center;}
+.block-btn {width:40px; height:40px; display:inline-block; margin:2px; border:2px solid #333; cursor:pointer; position:relative;}
+.count {position:absolute; bottom:0; right:0; background: rgba(255,255,255,0.7); font-size:12px; padding:1px 3px; border-radius:3px;}
+#mobile-controls button {width:50px; height:50px; margin:2px; font-size:18px;}
+</style>
+</head>
+<body>
+
+<h2>Minecraft 2D Responsive</h2>
+<div id="inventory"></div>
+<div id="crafting"></div>
+<div id="mobile-controls"></div>
+<canvas id="game" width="400" height="400"></canvas>
+
+<script>
+// --- Config ---
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+const rows = 20, cols = 20, blockSize = canvas.width/cols;
+const blockTypes = [
+  {name:'Terra', color:'#8B4513'},
+  {name:'Erba', color:'#228B22'},
+  {name:'Pietra', color:'#808080'},
+  {name:'Legno', color:'#DEB887'},
+  {name:'TavoloLegno', color:'#A0522D'}
+];
+const inventory = {}; blockTypes.forEach(b=>inventory[b.color]=0);
+let selectedColor = blockTypes[0].color;
+const recipes = [{input:['#DEB887','#DEB887'], output:'#A0522D'}];
+const grid = Array.from({length: rows}, ()=>Array(cols).fill(null));
+const player={x:10,y:0,color:"#FF0000",width:1,height:1};
+
+// Terreno e alberi
+for(let c=0;c<cols;c++){grid[rows-1][c]="#8B4513"; if(Math.random()<0.5) grid[rows-2][c]="#228B22";}
+function generateTree(x){const h=Math.floor(Math.random()*3)+2; for(let i=0;i<h;i++)grid[rows-3-i][x]="#DEB887"; const leafRow=rows-3-h; if(leafRow>=0){for(let dx=-1;dx<=1;dx++){if(x+dx>=0&&x+dx<cols)grid[leafRow][x+dx]="#228B22";}}}
+for(let i=0;i<5;i++) generateTree(Math.floor(Math.random()*cols));
+
+// --- Disegno ---
+function drawGrid(){ctx.clearRect(0,0,canvas.width,canvas.height); for(let r=0;r<rows;r++){for(let c=0;c<cols;c++){if(grid[r][c]){ctx.fillStyle=grid[r][c]; ctx.fillRect(c*blockSize,r*blockSize,blockSize,blockSize);} ctx.strokeStyle="#aaa"; ctx.strokeRect(c*blockSize,r*blockSize,blockSize,blockSize);}} ctx.fillStyle=player.color; ctx.fillRect(player.x*blockSize,player.y*blockSize,blockSize*player.width,blockSize*player.height);}
+
+// --- Inventario ---
+const inventoryDiv=document.getElementById('inventory');
+function updateInventoryUI(){inventoryDiv.innerHTML=''; blockTypes.forEach(b=>{const btn=document.createElement('div'); btn.className='block-btn'; btn.style.background=b.color; if(b.color===selectedColor) btn.style.border='3px solid yellow'; const count=document.createElement('div'); count.className='count'; count.textContent=inventory[b.color]; btn.appendChild(count); btn.addEventListener('click',()=>{selectedColor=b.color; updateInventoryUI();}); inventoryDiv.appendChild(btn);});}
+updateInventoryUI();
+
+// --- Crafting ---
+const craftingDiv=document.getElementById('crafting');
+function craftBlocks(inputColors){for(const r of recipes){const match=r.input.every(c=>inputColors.includes(c)); if(match){r.input.forEach(c=>inventory[c]--); inventory[r.output]++; updateInventoryUI(); alert("Crafting riuscito!"); return;}} alert("Nessuna ricetta valida");}
+function updateCraftingUI(){craftingDiv.innerHTML=''; const selectedInputs=[]; blockTypes.forEach(b=>{const btn=document.createElement('div'); btn.className='block-btn'; btn.style.background=b.color; btn.addEventListener('click',()=>{if(inventory[b.color]>0){selectedInputs.push(b.color);} if(selectedInputs.length>=2){craftBlocks(selectedInputs.splice(0,2)); updateCraftingUI();}}); craftingDiv.appendChild(btn);});}
+updateCraftingUI();
+
+// --- Click per piazzare/rimuovere ---
+canvas.addEventListener('click',e=>{const rect = canvas.getBoundingClientRect(); const x=Math.floor((e.clientX-rect.left)/blockSize); const y=Math.floor((e.clientY-rect.top)/blockSize); if(e.shiftKey){if(grid[y][x]){inventory[grid[y][x]]++; selectedColor=grid[y][x]; updateInventoryUI(); grid[y][x]=null;}} else {if(y===rows-1 || grid[y+1][x]){if(inventory[selectedColor]>0){grid[y][x]=selectedColor; inventory[selectedColor]--; updateInventoryUI();}}} drawGrid();});
+
+// --- Gravità ---
+function applyGravity(){let changed=false; for(let r=rows-2;r>=0;r--){for(let c=0;c<cols;c++){if(grid[r][c]&&!grid[r+1][c]){grid[r+1][c]=grid[r][c]; grid[r][c]=null; changed=true;}}} if(player.y<rows-1 && !grid[player.y+1][player.x]){player.y++; changed=true;} if(changed) drawGrid();}
+setInterval(applyGravity,150);
+
+// --- Movimento ---
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+if(!isMobile){
+  document.addEventListener('keydown',e=>{let nx=player.x, ny=player.y; if(e.key==="a") nx--; if(e.key==="d") nx++; if(e.key==="w"&&player.y>0&&grid[player.y-1][player.x]==null) ny--; if(nx>=0&&nx<cols&&!grid[player.y][nx]) player.x=nx; if(ny>=0&&ny<rows&&!grid[ny][player.x]) player.y=ny; drawGrid();});
+}else{
+  const controlsDiv=document.getElementById('mobile-controls');
+  const buttons=[{label:'⬅',dx:-1},{label:'➡',dx:1},{label:'⬆',dy:-1}];
+  buttons.forEach(b=>{const btn=document.createElement('button'); btn.textContent=b.label; btn.addEventListener('click',()=>{if(b.dx){let nx=player.x+b.dx; if(nx>=0&&nx<cols&&!grid[player.y][nx]) player.x=nx;} if(b.dy){let ny=player.y+b.dy; if(ny>=0&&ny<rows&&!grid[ny][player.x]) player.y=ny;} drawGrid();}); controlsDiv.appendChild(btn);});
+}
+
+// --- Disegna iniziale ---
+drawGrid();
+</script>
+
+</body>
+</html>
