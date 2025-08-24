@@ -136,10 +136,10 @@ main {
     display: none;
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     bottom: 0;
     width: 200px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
     z-index: 999;
     background-color: var(--sidebar-bg);
   }
