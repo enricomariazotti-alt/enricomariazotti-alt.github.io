@@ -9,7 +9,7 @@ nav_order: 1
   <ul></ul>
 </div>
 
-# MS? My Style ☕🌍
+# MS-My Style! ☕🌍
 
 MS? Multiple Sclerosis? No thanks. I prefer **My Style**. 💪  
 
