@@ -81,6 +81,7 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("theme","light");
     themeToggle.textContent = "Switch to Dark Mode";
   }
+  updateCommentBoxTheme();
 });
 
 // Generate Desktop TOC (h2/h3)
@@ -120,8 +121,23 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileTOC.appendChild(li);
   });
 });
-</script>
-<script>
+
+// CommentBox theme updater
+function updateCommentBoxTheme() {
+  const iframe = document.querySelector('#comments iframe');
+  if (!iframe) return;
+  try {
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    doc.body.style.backgroundColor = getComputedStyle(document.body).getPropertyValue('--bg-color');
+    doc.body.style.color = getComputedStyle(document.body).getPropertyValue('--text-color');
+  } catch(e) {
+    console.log('Cannot access CommentBox iframe for styling (cross-origin)');
+  }
+}
+
+// Update CommentBox on load
+window.addEventListener('load', updateCommentBoxTheme);
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/sw.js').then(

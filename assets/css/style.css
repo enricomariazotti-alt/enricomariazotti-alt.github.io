@@ -153,7 +153,7 @@ main {
 
   /* Mobile TOC styling */
   .mobile-toc {
-    display: block;           /* visible on mobile */
+    display: block;
     padding: 0.5em;
     background-color: var(--sidebar-bg);
     border: 1px solid #ccc;
@@ -162,4 +162,24 @@ main {
   .mobile-toc ul {
     padding-left: 1.2em;
   }
+}
+
+/* Comment section */
+#comments {
+  background-color: var(--sidebar-bg);
+  color: var(--text-color);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#comments h3 {
+  margin-top: 0;
+}
+
+/* CommentBox.io iframe styling for dark mode */
+#comments .commentbox iframe {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
 }
