@@ -8,7 +8,9 @@ nav_order: 99
 
 Click the button below to start the game:
 
-[Start Game](/game/mini-game-advanced.html){: .button }
+[Catch the circle Game](/game/mini-game-advanced.html){: .button }
+
+[Guess Game](/game/guess-game.html){: .button }
 
 ---
 
