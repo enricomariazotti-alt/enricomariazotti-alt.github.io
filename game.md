@@ -16,6 +16,8 @@ Click the button below to start the game:
 
 [Dino-runner Game](/game/dino-runner.html){: .button }
 
+[EMZ-Craft 2D Game](/game/emzcraft.html){: .button }
+
 ---
 
 > Note: The game will open in a new page.
