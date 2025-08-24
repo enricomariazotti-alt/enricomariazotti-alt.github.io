@@ -14,6 +14,8 @@ Click the button below to start the game:
 
 [Memory Game](/game/memory-game.html){: .button }
 
+[Dino-runner Game](/game/dino-runner.html){: .button }
+
 ---
 
 > Note: The game will open in a new page.
