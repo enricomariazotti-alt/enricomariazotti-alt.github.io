@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Number Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+      padding: 2em;
+    }
+    h1 {
+      color: #2b6cb0;
+    }
+    .game-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+    }
+    button {
+      background: #2b6cb0;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1e4e8c;
+    }
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Guess the Number!</h1>
+  <div class="game-box">
+    <p>I picked a number between 1 and 20.</p>
+    <p>Can you guess it?</p>
+    <input type="number" id="guess" min="1" max="20">
+    <button onclick="checkGuess()">Guess!</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    let number = Math.floor(Math.random() * 20) + 1;
+    let tries = 0;
+
+    function checkGuess() {
+      const guess = parseInt(document.getElementById("guess").value);
+      tries++;
+      if (guess === number) {
+        document.getElementById("message").textContent = 
+          `🎉 Correct! You guessed it in ${tries} tries.`;
+      } else if (guess < number) {
+        document.getElementById("message").textContent = "Too low! Try again.";
+      } else {
+        document.getElementById("message").textContent = "Too high! Try again.";
+      }
+    }
+  </script>
+</body>
+</html>
