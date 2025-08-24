@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Gioco Avanzato | {{ site.title }}</title>
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<style>
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+}
+
+#game-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: var(--sidebar-bg);
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  height: 350px;
+}
+
+#circle {
+  width: 50px;
+  height: 50px;
+  background-color: var(--link-color);
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#score, #timer {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<main>
+  <div id="game-container">
+    <h2>Click the Circle! ⏱ 30s</h2>
+    <div id="circle"></div>
+    <p id="score">Punti: 0</p>
+    <p id="timer">Tempo: 30s</p>
+    <button id="restartBtn">Ricomincia</button>
+  </div>
+</main>
+
+<script>
+const circle = document.getElementById('circle');
+const scoreDisplay = document.getElementById('score');
+const timerDisplay = document.getElementById('timer');
+const restartBtn = document.getElementById('restartBtn');
+const gameContainer = document.getElementById('game-container');
+
+let score = 0;
+let timeLeft = 30;
+let interval;
+let speed = 1000; // intervallo iniziale del cerchio in ms
+let gameWidth = gameContainer.offsetWidth;
+let gameHeight = gameContainer.offsetHeight;
+
+// Funzione per colori casuali
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for(let i=0; i<6; i++) color += letters[Math.floor(Math.random()*16)];
+  return color;
+}
+
+// Muovi cerchio
+function moveCircle() {
+  const x = Math.random() * (gameWidth - 50);
+  const y = Math.random() * (gameHeight - 50);
+  circle.style.left = x + 'px';
+  circle.style.top = y + 'px';
+  circle.style.backgroundColor = getRandomColor();
+}
+
+// Gestione click cerchio
+circle.addEventListener('click', () => {
+  score++;
+  scoreDisplay.textContent = `Punti: ${score}`;
+  
+  // Aumenta difficoltà: riduci intervallo
+  if(speed > 300) speed -= 50;
+  clearInterval(interval);
+  interval = setInterval(moveCircle, speed);
+
+  moveCircle();
+});
+
+// Timer
+function startTimer() {
+  clearInterval(interval);
+  speed = 1000;
+  interval = setInterval(moveCircle, speed);
+  timeLeft = 30;
+  timerDisplay.textContent = `Tempo: ${timeLeft}s`;
+  score = 0;
+  scoreDisplay.textContent = `Punti: ${score}`;
+  
+  const timerInterval = setInterval(() => {
+    timeLeft--;
+    timerDisplay.textContent = `Tempo: ${timeLeft}s`;
+    if(timeLeft <= 0) {
+      clearInterval(timerInterval);
+      clearInterval(interval);
+      alert(`Tempo scaduto! Punteggio finale: ${score}`);
+    }
+  }, 1000);
+}
+
+// Restart game
+restartBtn.addEventListener('click', startTimer);
+
+// Inizializza
+startTimer();
+
+// Aggiorna dimensioni al resize
+window.addEventListener('resize', () => {
+  gameWidth = gameContainer.offsetWidth;
+  gameHeight = gameContainer.offsetHeight;
+});
+</script>
+</body>
+</html>

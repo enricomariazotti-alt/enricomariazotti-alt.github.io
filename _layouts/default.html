@@ -16,17 +16,18 @@
 <!-- Left sidebar -->
 <nav class="sidebar-left">
   <h3>Pages</h3>
-  <ul>
-    {% assign sorted_pages = site.pages | sort: "nav_order" %}
-    {% for p in sorted_pages %}
-      {% if p.title %}
-        <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-        {% if forloop.index == 2 %}
-          <hr>
-        {% endif %}
+<ul>
+  {% assign sorted_pages = site.pages | sort: "nav_order" %}
+  {% for p in sorted_pages %}
+    {% if p.title %}
+      <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+      {% if forloop.index == 2 %}
+        <hr>
       {% endif %}
-    {% endfor %}
-  </ul>
+    {% endif %}
+  {% endfor %}
+  <li><a href="{{ '/pages/mini-game-advanced.html' | relative_url }}">Mini Gioco</a></li>
+</ul>
 </nav>
 
 <!-- Main content -->
