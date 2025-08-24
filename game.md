@@ -12,6 +12,8 @@ Click the button below to start the game:
 
 [Guess Game](/game/guess-game.html){: .button }
 
+[Memory Game](/game/memory-game.html){: .button }
+
 ---
 
 > Note: The game will open in a new page.
