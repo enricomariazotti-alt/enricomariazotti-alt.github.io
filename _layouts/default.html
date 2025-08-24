@@ -16,25 +16,24 @@
 <!-- Left sidebar -->
 <nav class="sidebar-left">
   <h3>Pages</h3>
-<ul>
-  {% assign sorted_pages = site.pages | sort: "nav_order" %}
-  {% for p in sorted_pages %}
-    {% if p.title %}
-      <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-      {% if forloop.index == 2 %}
-        <hr>
+  <ul>
+    {% assign sorted_pages = site.pages | sort: "nav_order" %}
+    {% for p in sorted_pages %}
+      {% if p.title %}
+        <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+        {% if forloop.index == 2 %}
+          <hr>
+        {% endif %}
       {% endif %}
-    {% endif %}
-  {% endfor %}
-  <li><a href="{{ '/game/mini-game-advanced.html' | relative_url }}">Mini Gioco</a></li>
-</ul>
+    {% endfor %}
+  </ul>
 </nav>
 
 <!-- Main content -->
 <main>
   {{ content }}
 
-  <!-- Commenti con CommentBox.io -->
+  <!-- Commenti con CommentBox.io sempre chiaro -->
   <section id="comments">
     <h3>Commenti</h3>
     <div class="commentbox"></div>
@@ -42,8 +41,8 @@
 
   <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
   <script>
-    // Inizializza CommentBox con tema corrente
-    commentBox('5635888088350720-proj', { dark: document.body.classList.contains('dark') });
+    // CommentBox sempre light, indipendentemente dal tema
+    commentBox('5635888088350720-proj');
   </script>
 </main>
 
@@ -73,7 +72,7 @@ if(localStorage.getItem("theme") === "dark") {
   themeToggle.textContent = "Switch to Dark Mode";
 }
 
-// Toggle theme and save
+// Toggle theme and save (CommentBox rimane light)
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   if(document.body.classList.contains("dark")) {
@@ -83,10 +82,6 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("theme","light");
     themeToggle.textContent = "Switch to Dark Mode";
   }
-
-  // Ricrea CommentBox con tema aggiornato
-  document.querySelector('#comments .commentbox').innerHTML = '';
-  commentBox('5635888088350720-proj', { dark: document.body.classList.contains('dark') });
 });
 
 // Generate Desktop TOC (h2/h3)
