@@ -19,5 +19,3 @@ Click the button below to start the game:
 [EMZ-Craft 2D Game](/game/emzcraft.html){: .button }
 
 ---
-
-> Note: The game will open in a new page.
