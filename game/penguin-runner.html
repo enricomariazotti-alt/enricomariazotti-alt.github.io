@@ -77,10 +77,10 @@ const dino = document.getElementById("dino");
 const scoreDisplay = document.getElementById("score");
 const gameOverText = document.getElementById("game-over");
 
-let isJumping = false;
-let velocity = 0;
+let position = 0;         // altezza dal pavimento
+let velocity = 0;         // velocità verticale
 let gravity = 0.8;
-let position = 0;
+let isJumping = false;
 let score = 0;
 let gameOver = false;
 let cactusSpeed = 6;
@@ -88,14 +88,14 @@ let obstacles = [];
 
 function jump() {
   if (!isJumping && !gameOver) {
+    velocity = -12;  // impulso verso l’alto
     isJumping = true;
-    velocity = -12;
   } else if (gameOver) {
     restartGame();
   }
 }
 
-document.addEventListener("keydown", e => { if (e.code === "Space") jump(); });
+document.addEventListener("keydown", e => { if(e.code === "Space") jump(); });
 document.addEventListener("click", jump);
 document.addEventListener("touchstart", jump);
 
@@ -107,61 +107,68 @@ function createCactus() {
   cactus.style.right = "-40px";
 }
 
-setInterval(() => {
-  if (!gameOver) {
-    score++;
-    scoreDisplay.textContent = "Score: " + score;
-    if(score % 50 === 0) cactusSpeed += 0.5; // increase difficulty
-  }
-}, 200);
-
-function updateGame() {
-  // Dino physics
-  velocity += gravity;
-  position += velocity;
-  if(position <= 0){
-    position = 0;
-    isJumping = false;
-    velocity = 0;
-  }
-  dino.style.bottom = position + "px";
-
-  // Move obstacles
-  obstacles.forEach((cactus, index) => {
-    let right = parseFloat(cactus.style.right);
-    right += cactusSpeed;
-    cactus.style.right = right + "px";
-
-    // Remove off-screen cactus
-    if (right > 850) {
-      cactus.remove();
-      obstacles.splice(index, 1);
-    }
-
-    // Collision detection
-    const dinoRect = dino.getBoundingClientRect();
-    const cactusRect = cactus.getBoundingClientRect();
-    if (
-      dinoRect.right > cactusRect.left &&
-      dinoRect.left < cactusRect.right &&
-      dinoRect.bottom > cactusRect.top
-    ) {
-      gameOver = true;
-      gameOverText.style.display = "block";
-    }
-  });
-
-  if (!gameOver) requestAnimationFrame(updateGame);
-}
-
 function spawnObstacles() {
   if(!gameOver){
     createCactus();
-    setTimeout(spawnObstacles, 1500 + Math.random() * 2000);
+    setTimeout(spawnObstacles, 1500 + Math.random()*2000);
   }
 }
 
+function updateDino() {
+  if (!gameOver) {
+    velocity += gravity;        // applica gravità
+    position += velocity;       // aggiorna posizione
+    if(position <= 0){          // tocca il suolo
+      position = 0;
+      velocity = 0;
+      isJumping = false;
+    }
+    dino.style.bottom = position + "px";
+    requestAnimationFrame(updateDino);
+  }
+}
+
+function updateObstacles() {
+  if (!gameOver) {
+    obstacles.forEach((cactus, index) => {
+      let right = parseFloat(cactus.style.right);
+      right += cactusSpeed;
+      cactus.style.right = right + "px";
+
+      // rimuovi cactus fuori schermo
+      if (right > 850) {
+        cactus.remove();
+        obstacles.splice(index, 1);
+      }
+
+      // collisione
+      const dinoRect = dino.getBoundingClientRect();
+      const cactusRect = cactus.getBoundingClientRect();
+      if (
+        dinoRect.right > cactusRect.left &&
+        dinoRect.left < cactusRect.right &&
+        dinoRect.bottom > cactusRect.top
+      ) {
+        gameOver = true;
+        gameOverText.style.display = "block";
+      }
+    });
+
+    if(!gameOver) requestAnimationFrame(updateObstacles);
+  }
+}
+
+// aggiornamento punteggio
+setInterval(() => {
+  if(!gameOver){
+    score++;
+    scoreDisplay.textContent = "Score: " + score;
+    if(score % 50 === 0) cactusSpeed += 0.5; // aumenta difficoltà
+  }
+}, 200);
+
 function restartGame() {
+  // reset
   score = 0;
   cactusSpeed = 6;
   gameOver = false;
@@ -170,11 +177,15 @@ function restartGame() {
   obstacles = [];
   position = 0;
   velocity = 0;
-  updateGame();
+
+  updateDino();
+  updateObstacles();
   spawnObstacles();
 }
 
-updateGame();
+// Avvia il gioco
+updateDino();
+updateObstacles();
 spawnObstacles();
 </script>
 </body>
