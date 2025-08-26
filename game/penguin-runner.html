@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: #87ceeb url("images/sfondo.png") repeat-x center/cover;
+    background: #f7f7f7;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,7 @@
   #game {
     width: 800px;
     height: 200px;
-    background: rgba(224,247,250,0.8);
+    background: #e0f7fa;
     border: 3px solid #333;
     position: relative;
     overflow: hidden;
@@ -32,7 +32,7 @@
     position: absolute;
     bottom: 0;
     left: 50px;
-    background: url("images/pinguino.png") no-repeat center/contain;
+    background: url("/images/pinguino.png") no-repeat center/contain;
   }
 
   .jump {
@@ -51,7 +51,7 @@
     position: absolute;
     bottom: 0;
     right: -40px;
-    background: url("images/ice.png") no-repeat center/contain;
+    background: url("/images/ice.png") no-repeat center/contain;
     animation: moveCactus 2s linear infinite;
   }
 
@@ -88,40 +88,21 @@
   <div id="game-over">Game Over!<br>Press SPACE or TAP to restart</div>
 </div>
 
-<!-- Suoni -->
-<audio id="bg-music" src="sounds/music.mp3" loop></audio>
-<audio id="jump-sound" src="sounds/jump.mp3"></audio>
-<audio id="gameover-sound" src="sounds/gameover.mp3"></audio>
-
 <script>
 const dino = document.getElementById("dino");
 const cactus = document.getElementById("cactus");
 const scoreDisplay = document.getElementById("score");
 const gameOverText = document.getElementById("game-over");
 
-const bgMusic = document.getElementById("bg-music");
-const jumpSound = document.getElementById("jump-sound");
-const gameoverSound = document.getElementById("gameover-sound");
-
 let isJumping = false;
 let score = 0;
 let gameOver = false;
-
-// avvia musica di sottofondo al primo click
-document.addEventListener("click", () => {
-  if(bgMusic.paused) {
-    bgMusic.volume = 0.5;
-    bgMusic.play();
-  }
-}, { once: true });
 
 // salto con CSS
 function jump() {
   if(!isJumping && !gameOver){
     isJumping = true;
     dino.classList.add("jump");
-    jumpSound.currentTime = 0;
-    jumpSound.play();
     setTimeout(() => {
       dino.classList.remove("jump");
       isJumping = false;
@@ -155,8 +136,6 @@ setInterval(() => {
     gameOverText.style.display = "block";
     cactus.style.animation = "none";
     cactus.style.left = cactusLeft + "px";
-    gameoverSound.play();
-    bgMusic.pause();
   }
 }, 10);
 
@@ -167,8 +146,6 @@ function restartGame() {
   gameOverText.style.display = "none";
   scoreDisplay.textContent = "Score: 0";
   cactus.style.animation = "moveCactus 2s linear infinite";
-  bgMusic.currentTime = 0;
-  bgMusic.play();
 }
 </script>
 </body>
