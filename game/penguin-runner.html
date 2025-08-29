@@ -127,7 +127,7 @@
   <div id="cactus" class="cactus"></div>
   <div id="score">Score: 0</div>
   <div id="lives">Lives: 5</div>
-  <div id="game-over">Game Over!<br>Press SPACE or TAP to restart</div>
+  <div id="game-over"></div>
   <button id="start-btn">Start Game</button>
   <div id="countdown"></div>
   <div id="instruction">Press SPACE or tap the screen to jump over the icebergs!</div>
@@ -148,6 +148,7 @@ let score = 0;
 let gameOver = false;
 let lives = 5;        // default
 let damageLimit = 5;  // configurable "margin of error"
+let gameRunning = false; // control when score starts
 
 // start button logic
 startBtn.addEventListener("click", () => {
@@ -158,6 +159,7 @@ startBtn.addEventListener("click", () => {
   lives = damageLimit;
   score = 0;
   gameOver = false;
+  gameRunning = false;
 
   scoreDisplay.textContent = "Score: 0";
   livesDisplay.textContent = "Lives: " + lives;
@@ -171,6 +173,7 @@ startBtn.addEventListener("click", () => {
   startCountdown(() => {
     instruction.style.display = "none";
     cactus.style.animation = "moveCactus 2s linear infinite";
+    gameRunning = true; // score starts after countdown
   });
 });
 
@@ -214,7 +217,7 @@ document.addEventListener("touchstart", jump);
 
 // score increase over time
 setInterval(() => {
-  if(!gameOver && startBtn.style.display === "none" && cactus.style.animation !== "none"){
+  if(!gameOver && gameRunning){
     score++;
     scoreDisplay.textContent = "Score: " + score;
   }
@@ -239,8 +242,14 @@ setInterval(() => {
 
     if(lives <= 0){
       gameOver = true;
-      gameOverText.style.display = "block";
+      gameRunning = false;
       cactus.style.animation = "none";
+      
+      // final score = raw score / margin
+      let finalScore = Math.floor(score / damageLimit);
+      gameOverText.innerHTML = `Game Over!<br>Your final score: ${finalScore}<br>Press SPACE or TAP to restart`;
+      gameOverText.style.display = "block";
+
       startBtn.style.display = "block"; // show start button again
       startBtn.textContent = "Restart Game";
     }
