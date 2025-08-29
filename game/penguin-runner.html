@@ -72,7 +72,7 @@
 
   #game-over {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 28px;
@@ -83,7 +83,7 @@
 
   #start-btn {
     position: absolute;
-    top: 50%;
+    top: 40%; /* 👈 più in alto sopra al Game Over */
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 12px 24px;
@@ -95,6 +95,7 @@
     color: white;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    display: block;
   }
 
   #countdown {
@@ -152,6 +153,10 @@ let gameRunning = false; // control when score starts
 
 // start button logic
 startBtn.addEventListener("click", () => {
+  beginGame();
+});
+
+function beginGame() {
   let input = prompt("Enter margin of error before game over (default = 5):", "5");
   damageLimit = parseInt(input);
   if (isNaN(damageLimit) || damageLimit <= 0) damageLimit = 5;
@@ -175,7 +180,7 @@ startBtn.addEventListener("click", () => {
     cactus.style.animation = "moveCactus 2s linear infinite";
     gameRunning = true; // score starts after countdown
   });
-});
+}
 
 // countdown function
 function startCountdown(callback) {
@@ -206,14 +211,34 @@ function jump() {
       dino.classList.remove("jump");
       isJumping = false;
     }, 500);
-  } else if(gameOver){
-    restartGame();
   }
 }
 
-document.addEventListener("keydown", e => { if(e.code === "Space") jump(); });
-document.addEventListener("click", jump);
-document.addEventListener("touchstart", jump);
+// SPACE and click controls
+document.addEventListener("keydown", e => {
+  if(e.code === "Space") {
+    e.preventDefault();
+    if(gameOver) {
+      beginGame(); // SPACE restart
+    } else {
+      jump();
+    }
+  }
+});
+document.addEventListener("click", () => {
+  if(gameOver) {
+    beginGame();
+  } else {
+    jump();
+  }
+});
+document.addEventListener("touchstart", () => {
+  if(gameOver) {
+    beginGame();
+  } else {
+    jump();
+  }
+});
 
 // score increase over time
 setInterval(() => {
@@ -250,17 +275,11 @@ setInterval(() => {
       gameOverText.innerHTML = `Game Over!<br>Your final score: ${finalScore}<br>Press SPACE or TAP to restart`;
       gameOverText.style.display = "block";
 
-      startBtn.style.display = "block"; // show start button again
+      startBtn.style.display = "block"; 
       startBtn.textContent = "Restart Game";
     }
   }
 }, 10);
-
-// restart
-function restartGame() {
-  startBtn.style.display = "block";
-  startBtn.textContent = "Restart Game";
-}
 </script>
 </body>
 </html>
