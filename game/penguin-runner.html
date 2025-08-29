@@ -60,13 +60,15 @@
     to { right: 100%; }
   }
 
-  #score {
+  #score, #lives {
     position: absolute;
     top: 10px;
-    left: 10px;
     font-size: 18px;
     font-weight: bold;
   }
+
+  #score { left: 10px; }
+  #lives { right: 10px; }
 
   #game-over {
     position: absolute;
@@ -78,6 +80,45 @@
     display: none;
     text-align: center;
   }
+
+  #start-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px 24px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: #28a745;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  }
+
+  #countdown {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    font-weight: bold;
+    color: #000;
+    display: none;
+    text-align: center;
+  }
+
+  #instruction {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    display: none;
+  }
 </style>
 </head>
 <body>
@@ -85,20 +126,75 @@
   <div id="dino"></div>
   <div id="cactus" class="cactus"></div>
   <div id="score">Score: 0</div>
+  <div id="lives">Lives: 5</div>
   <div id="game-over">Game Over!<br>Press SPACE or TAP to restart</div>
+  <button id="start-btn">Start Game</button>
+  <div id="countdown"></div>
+  <div id="instruction">Press SPACE or tap the screen to jump over the icebergs!</div>
 </div>
 
 <script>
 const dino = document.getElementById("dino");
 const cactus = document.getElementById("cactus");
 const scoreDisplay = document.getElementById("score");
+const livesDisplay = document.getElementById("lives");
 const gameOverText = document.getElementById("game-over");
+const startBtn = document.getElementById("start-btn");
+const countdownEl = document.getElementById("countdown");
+const instruction = document.getElementById("instruction");
 
 let isJumping = false;
 let score = 0;
 let gameOver = false;
+let lives = 5;        // default
+let damageLimit = 5;  // configurable "margin of error"
 
-// salto con CSS
+// start button logic
+startBtn.addEventListener("click", () => {
+  let input = prompt("Enter margin of error before game over (default = 5):", "5");
+  damageLimit = parseInt(input);
+  if (isNaN(damageLimit) || damageLimit <= 0) damageLimit = 5;
+
+  lives = damageLimit;
+  score = 0;
+  gameOver = false;
+
+  scoreDisplay.textContent = "Score: 0";
+  livesDisplay.textContent = "Lives: " + lives;
+  gameOverText.style.display = "none";
+  cactus.style.animation = "none";
+
+  startBtn.style.display = "none"; // hide start button
+  instruction.style.display = "block";
+
+  // start countdown
+  startCountdown(() => {
+    instruction.style.display = "none";
+    cactus.style.animation = "moveCactus 2s linear infinite";
+  });
+});
+
+// countdown function
+function startCountdown(callback) {
+  let count = 3;
+  countdownEl.style.display = "block";
+  countdownEl.textContent = count;
+
+  let interval = setInterval(() => {
+    count--;
+    if(count > 0){
+      countdownEl.textContent = count;
+    } else if(count === 0){
+      countdownEl.textContent = "GO!";
+    } else {
+      clearInterval(interval);
+      countdownEl.style.display = "none";
+      callback();
+    }
+  }, 1000);
+}
+
+// jump function
 function jump() {
   if(!isJumping && !gameOver){
     isJumping = true;
@@ -116,36 +212,45 @@ document.addEventListener("keydown", e => { if(e.code === "Space") jump(); });
 document.addEventListener("click", jump);
 document.addEventListener("touchstart", jump);
 
-// punteggio
+// score increase over time
 setInterval(() => {
-  if(!gameOver){
+  if(!gameOver && startBtn.style.display === "none" && cactus.style.animation !== "none"){
     score++;
     scoreDisplay.textContent = "Score: " + score;
   }
 }, 200);
 
-// collisione
+// collision check
 setInterval(() => {
-  if(gameOver) return;
+  if(gameOver || cactus.style.animation === "none") return;
 
   let dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue("bottom"));
   let cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue("left"));
 
   if(cactusLeft < 80 && cactusLeft > 30 && dinoBottom < 50){
-    gameOver = true;
-    gameOverText.style.display = "block";
+    lives--; // lose 1 life
+    livesDisplay.textContent = "Lives: " + lives;
+
+    // reset cactus to avoid multiple hits at once
     cactus.style.animation = "none";
-    cactus.style.left = cactusLeft + "px";
+    setTimeout(() => {
+      if(!gameOver) cactus.style.animation = "moveCactus 2s linear infinite";
+    }, 10);
+
+    if(lives <= 0){
+      gameOver = true;
+      gameOverText.style.display = "block";
+      cactus.style.animation = "none";
+      startBtn.style.display = "block"; // show start button again
+      startBtn.textContent = "Restart Game";
+    }
   }
 }, 10);
 
 // restart
 function restartGame() {
-  score = 0;
-  gameOver = false;
-  gameOverText.style.display = "none";
-  scoreDisplay.textContent = "Score: 0";
-  cactus.style.animation = "moveCactus 2s linear infinite";
+  startBtn.style.display = "block";
+  startBtn.textContent = "Restart Game";
 }
 </script>
 </body>
