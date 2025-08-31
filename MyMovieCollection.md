@@ -8,25 +8,124 @@ nav_order: 99
 
 This is a list of my Blu-ray movies, including release year, rating, audio, and subtitles.
 
-| Title | Format | Movie Release Year | Rating | Audio | Subtitles |
-|-------|--------|------------------|--------|-------|----------|
-| Batman The Dark Knight Trilogie | Blu-ray | 2012 | FSK 12 | English - DTS-HD Master 5.1, German - DTS 5.1 | English, German |
-| Baymax - Riesiges Robowabohu | Blu-ray | 2014 | FSK 6 | English - DTS-HD Master 7.1, German - DTS-HD Master 7.1, Italian - DTS 5.1, Turkish - DTS 5.1 | English SDH, German, Italian, Turkish |
-| Captain America The First Avenger | Blu-ray | 2011 | FSK 12 | English - DTS-HD Master 7.1, French - Dolby Digital 5.1, German - Dolby Digital 5.1, Italian - Dolby Digital 5.1, Spanish - Dolby Digital 5.1 | English, French, German |
-| Cars 1-3, 3 s | Blu-ray | 2017 | G | English - Dolby Digital 5.1 | English, German |
-| Der gestiefelte Kater | Blu-ray | 2018 | FSK 6 | English - Dolby Digital 5.1, German - DTS 5.1 | English, German |
-| Drachenzähmen Leicht Gemacht 1-3 | Blu-ray | 2019 | FSK 6 | English - DTS-HD Master 7.1, German - DTS 5.1 | English, German |
-| Guardians of the Galaxy 1 | Blu-ray | 2014 | FSK 12 | English - DTS-HD Master 7.1, English - DTS-HD Master 5.1, German - DTS 5.1, Italian - Dolby Digital 5.1 | English, German, Italian, Turkish |
-| Happy Feet | Blu-ray | 2006 | FSK 0 | English - Dolby Digital AC-3 | Danish, English, Finnish, Norwegian, Swedish |
-| Ice Age 1-5 5 | Blu-ray | 2016 | FSK 0 | English - Dolby Digital 5.1, German - DTS 5.1 | English, German |
-| Ich – Einfach unverbesserlich / Minions – 6 Movie Collection | Blu-ray | 2024 | FSK 0 | English - DTS-HD Master 7.1, German - DTS 5.1 | English, German |
-| Iron Man Trilogie [Blu-ray] | Blu-ray | 2014 | FSK 12 | English - DTS-HD Master 7.1, German - DTS 5.1 | English, German |
-| Jurassic Park L’intégrale | Blu-ray | 2022 | FSK 12 | English - DTS-HD Master 7.1, German - DTS 5.1 | English, German |
-| Marvel Return of the First Avenger | Blu-ray | 2014 | FSK 12 | English - DTS-HD Master 7.1, German - Dolby Digital 5.1 | English, German, Italian, Turkish |
-| Marvel’s Avengers 1 The Avengers | Blu-ray | 2012 | FSK 12 | English - DTS-HD Master 7.1, German - DTS-HD Master 7.1 | English, English SDH, Greek, Turkish |
-| Matrix 1-3 | Blu-ray | 2003 | FSK 16 | English - Dolby TrueHD 5.1 | English, German |
-| Minecraft | Blu-ray | 2025 | FSK 0 | English - DTS 5.1 | English |
-| Shrek - Shrekologie 1-4 | Blu-ray | 2010 | FSK 6 | English - Dolby Digital 5.1, German - DTS 5.1 | English, German |
-| Thor | Blu-ray | 2011 | FSK 12 | English - DTS-HD Master 7.1, English - Dolby Digital 5.1, English SDH - Dolby Digital 5.1, French - Dolby Digital 5.1, German - Dolby Digital 5.1, Italian - Dolby Digital 5.1, Spanish - Dolby Digital 5.1 | Danish, Dutch, English, English SDH, Finnish, French, German, Italian, Norwegian, Spanish, Swedish |
-| Transformers - 5-Movie Collection | Blu-ray | 2017 | FSK 12 | English - DTS 5.1, German - DTS 5.1 | English, German |
-| Transformers One | Blu-ray | 2024 | FSK 6 | English - Dolby Digital 5.1, German - DTS 5.1 | English, German |
+# 🎬 My Movie Collection
+
+<table style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr style="background-color: #333; color: white;">
+      <th style="border: 1px solid #ccc; padding: 8px;">Title</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">Barcode</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">Year</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">N. of Disk</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">Img</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f9f9f9;">
+      <td><strong>Batman The Dark Knight Trilogie</strong></td>
+      <td><em>5051889001751</em></td>
+      <td>-</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/240/2405304_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr>
+      <td><strong>Baymax - Riesiges Robowabohu</strong></td>
+      <td><em>8717418454111</em></td>
+      <td>2014, 102</td>
+      <td>C</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/195/1957543_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td><strong>Captain America The First Avenger</strong></td>
+      <td><em>4010884250886</em></td>
+      <td>2011, 124</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/119/1199372_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr>
+      <td><strong>Cars 1-3, 3 s</strong></td>
+      <td><em>8717418519995</em></td>
+      <td>2017</td>
+      <td>D</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/248/2488617_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td><strong>Der gestiefelte Kater</strong></td>
+      <td><em>5053083167899</em></td>
+      <td>, 58</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/316/3160293_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr>
+      <td><strong>Dexter</strong></td>
+      <td><em>4010884288148</em></td>
+      <td>2012</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/155/1555100_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td><strong>Dexter</strong></td>
+      <td><em>4010884238136</em></td>
+      <td>-</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/223/2237800_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr>
+      <td><strong>Dexter</strong></td>
+      <td><em>4010884238112</em></td>
+      <td>2010</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/102/1022859_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td><strong>Dexter</strong></td>
+      <td><em>4010884238105</em></td>
+      <td>2011</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/155/1555125_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr>
+      <td><strong>Dexter</strong></td>
+      <td><em>4010884238082</em></td>
+      <td>-</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/223/2237802_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td><strong>Dexter (Season 2)</strong></td>
+      <td><em>4010884238099</em></td>
+      <td>-</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/223/2237804_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr>
+      <td><strong>Dexter (Season 5)</strong></td>
+      <td><em>4010884238129</em></td>
+      <td>-</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/129/1291438_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td><strong>Dexter - New Blood - The Complete Series</strong></td>
+      <td><em>7333018022874</em></td>
+      <td>2021, 526</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/277/2776978_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr>
+      <td><strong>Dexter Original Sin</strong></td>
+      <td><em>191329281215</em></td>
+      <td>2025</td>
+      <td>-</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/321/3215647_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td><strong>Drachenzähmen Leicht Gemacht 1-3</strong></td>
+      <td><em>5053083188269</em></td>
+      <td>2019</td>
+      <td>G</td>
+      <td><img src="https://www.icollecteverything.com/images/movie/main/316/3163610_1.jpg" style="max-width:120px;max-height:170px;"></td>
+    </tr>
+    <!-- Aggiungi tutte le altre righe seguendo questo pattern -->
+  </tbody>
+</table>
