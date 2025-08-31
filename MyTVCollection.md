@@ -6,7 +6,6 @@ nav_order: 99
 
 # My Blu-ray and DVD Collection 🎬📀
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -27,11 +26,11 @@ nav_order: 99
 <tr><td>Captain America: The First Avenger</td><td>4010884250886</td><td>2011</td><td>2</td><td><img src="https://www.icollecteverything.com/images/movie/main/119/1199372_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
 <tr><td>Cars 1-3, 3 s</td><td>8717418519995</td><td>2017</td><td>3</td><td><img src="https://www.icollecteverything.com/images/movie/main/248/2488617_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
 <tr><td>Der gestiefelte Kater</td><td>5053083167899</td><td>2011</td><td>1</td><td><img src="https://www.icollecteverything.com/images/movie/main/316/3160293_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
-<tr><td>Dexter</td><td>4010884288148</td><td>2012</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/155/1555100_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
-<tr><td>Dexter</td><td>4010884238136</td><td>2013</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/223/2237800_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
-<tr><td>Dexter</td><td>4010884238112</td><td>2010</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/102/1022859_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
-<tr><td>Dexter</td><td>4010884238105</td><td>2011</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/155/1555125_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
-<tr><td>Dexter</td><td>4010884238082</td><td>2012</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/223/2237802_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
+<tr><td>Dexter (Season 7)</td><td>4010884288148</td><td>2012</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/155/1555100_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
+<tr><td>Dexter (Season 6)</td><td>4010884238136</td><td>2013</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/223/2237800_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
+<tr><td>Dexter (Season 4)</td><td>4010884238112</td><td>2010</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/102/1022859_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
+<tr><td>Dexter (Season 3)</td><td>4010884238105</td><td>2011</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/155/1555125_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
+<tr><td>Dexter (Season 1)</td><td>4010884238082</td><td>2012</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/223/2237802_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
 <tr><td>Dexter (Season 2)</td><td>4010884238099</td><td>2012</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/223/2237804_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
 <tr><td>Dexter (Season 5)</td><td>4010884238129</td><td>2012</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/129/1291438_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
 <tr><td>Dexter - New Blood - The Complete Series</td><td>7333018022874</td><td>2021</td><td>4</td><td><img src="https://www.icollecteverything.com/images/movie/main/277/2776978_1.jpg" style="max-width:120px;max-height:170px;width:auto;height:auto;"></td></tr>
